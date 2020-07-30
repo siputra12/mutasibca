@@ -182,6 +182,7 @@ class BCA{
 				$res1['desc2'] = $ress[1];
 				$res1['vendor'] = $ress[2];
 				$res1['amount'] = $ress[count($ress)-2];
+				$res1['detail'] = str_replace(array("<td>","  ")," ",@implode($ress, " "));
 				//$res1['type'] = $ress[count($ress)-1];
 				$result[$ress[count($ress)-1]][$ss] = $res1;
 			}
