@@ -64,7 +64,7 @@ class BCA{
 		$time = $this->Timecustom($this->_settingDate);
 		$timeDari = $time['dari'];
 		$timeKe = $time['ke'];
-		if(!file_exists("cookies_".$this->_userId.".txt"))
+		if(!file_exists($this->_cookies))
 		{
 			$login = $this->login();
 			if($login['status'] == "gagal")
@@ -76,7 +76,7 @@ class BCA{
 		$result = $this->curl($body, "accountstmt.do?value(actions)=acctstmtview", true);
 		if(strpos($result, "302 Moved Temporarily"))
 		{
-			unlink("cookies_".$this->_userId.".txt");
+			unlink($this->_cookies);
 			goto Awal;
 		}else
 		if(strpos($result, "TRANSAKSI GAGAL"))
